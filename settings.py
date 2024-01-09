@@ -19,3 +19,8 @@ HEIGHT = 480
 FONT = "snake_game/PressStart.ttf"
 FONT_SIZE = 25
 
+# rgb colors
+WHITE = (255, 255, 255)
+RED = (233, 29, 36)
+GREY = (41, 47, 49)
+GREEN = (120, 159, 122)

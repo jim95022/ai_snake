@@ -5,11 +5,10 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
 
-from settings import FOLDER_NAME, FILE_NAME
+from settings import FILE_NAME, FOLDER_NAME
 
 
 class Linear_QNet(nn.Module):
-
     def __init__(self, input_size, hidden_size, output_size):
         super().__init__()
         self.linear1 = nn.Linear(input_size, hidden_size)
@@ -24,7 +23,6 @@ class Linear_QNet(nn.Module):
         return x
 
     def save(self):
-
         if not os.path.exists(self.folder_name):
             os.makedirs(self.folder_name)
 
@@ -32,7 +30,6 @@ class Linear_QNet(nn.Module):
         torch.save(self.state_dict(), path)
 
     def load(self):
-
         path = os.path.join(self.folder_name, self.file_name)
 
         if os.path.exists(path):

@@ -6,7 +6,7 @@ import torch
 
 from helper import plot
 from model import Linear_QNet, QTrainer
-from settings import MAX_MEMORY, LR, BATCH_SIZE
+from settings import BATCH_SIZE, LR, MAX_MEMORY
 from snake_game.game import Direction, Point, SnakeGameAI
 
 

@@ -5,7 +5,8 @@ from enum import Enum
 import numpy as np
 import pygame
 
-from settings import SPEED, BLOCK_SIZE, FONT, FONT_SIZE, REWARD, HEIGHT, WIDTH
+from settings import (BLOCK_SIZE, FONT, FONT_SIZE, GREEN, GREY, HEIGHT, RED,
+                      REWARD, SPEED, WHITE, WIDTH)
 
 pygame.init()
 font = pygame.font.Font(FONT, FONT_SIZE)
@@ -19,12 +20,6 @@ class Direction(Enum):
 
 
 Point = namedtuple("Point", "x, y")
-
-# rgb colors
-WHITE = (255, 255, 255)
-RED = (233, 29, 36)
-GREY = (41, 47, 49)
-GREEN = (120, 159, 122)
 
 
 class SnakeGameAI:
