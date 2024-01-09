@@ -1,11 +1,12 @@
-import torch
 import random
-import numpy as np
-from snake_game.game import SnakeGameAI, Direction, Point
 from collections import deque
-from model import Linear_QNet, QTrainer
-from helper import plot
 
+import numpy as np
+import torch
+
+from helper import plot
+from model import Linear_QNet, QTrainer
+from snake_game.game import Direction, Point, SnakeGameAI
 
 MAX_MEMORY = 100_000
 BATCH_SIZE = 1000
@@ -65,7 +66,9 @@ class Agent:
         return np.array(state, dtype=int)
 
     def remember(self, state, action, reward, next_state, done):
-        self.memory.append((state, action, reward, next_state, done))  # popleft when max memory is reached
+        self.memory.append(
+            (state, action, reward, next_state, done)
+        )  # popleft when max memory is reached
 
     def train_long_memory(self):
         if len(self.memory) > BATCH_SIZE:

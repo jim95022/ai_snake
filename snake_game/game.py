@@ -1,8 +1,9 @@
-import pygame
 import random
-from enum import Enum
 from collections import namedtuple
+from enum import Enum
+
 import numpy as np
+import pygame
 
 pygame.init()
 font = pygame.font.Font("snake_game/arial.ttf", 25)
@@ -76,7 +77,7 @@ class SnakeGameAI:
         # 3. check if game over
         reward = 0
         game_over = False
-        if self.is_collision() or self.frame_iteration > 100*len(self.snake):
+        if self.is_collision() or self.frame_iteration > 100 * len(self.snake):
             game_over = True
             reward = -10
             return reward, game_over, self.score
