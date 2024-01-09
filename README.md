@@ -1,8 +1,10 @@
 # SNAKE AI
 
 Small project based on [this](https://youtu.be/L8ypSXwyBds?si=CKzTGcw2uGSbPqrk) tutorial. 
-A project that contains a snake game written in PyGame and a neural network model (Pytorch) that 
-is trained on playing this snake. 
+A project includes a classic snake video game written using `PyGame` and 
+a neural network model powered by `Pytorch` that is trained on playing this game.
+
+> BEST SCORE - 60
 
 ![screenshot](Screenshot.png)
 
