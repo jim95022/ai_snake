@@ -1,4 +1,3 @@
-
 # Model Settings
 FOLDER_NAME = "./model"
 FILE_NAME = "model.pth"
