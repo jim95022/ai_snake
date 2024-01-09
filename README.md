@@ -1,6 +1,6 @@
 # SNAKE AI
 
-Small project based on [this](https://youtu.be/L8ypSXwyBds?si=CKzTGcw2uGSbPqrk) tutorial. 
+Small project inspired by [tutorial](https://youtu.be/L8ypSXwyBds?si=CKzTGcw2uGSbPqrk) from [freeCodeCamp.org](https://www.freecodecamp.org/) YouTube channel. 
 A project includes a classic snake video game written using `PyGame` and 
 a neural network model powered by `Pytorch` that is trained on playing this game.
 
