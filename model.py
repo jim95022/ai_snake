@@ -5,33 +5,35 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
 
+from settings import FOLDER_NAME, FILE_NAME
+
 
 class Linear_QNet(nn.Module):
-    DEFAULT_FOLDER = "./model"
-    DEFAULT_FILE_NAME = "model.pth"
 
     def __init__(self, input_size, hidden_size, output_size):
         super().__init__()
         self.linear1 = nn.Linear(input_size, hidden_size)
         self.linear2 = nn.Linear(hidden_size, output_size)
 
+        self.folder_name = FOLDER_NAME
+        self.file_name = FILE_NAME
+
     def forward(self, x):
         x = F.relu(self.linear1(x))
         x = self.linear2(x)
         return x
 
-    def save(self, file_name=None):
-        file_name = file_name if file_name else self.DEFAULT_FILE_NAME
+    def save(self):
 
-        if not os.path.exists(self.DEFAULT_FOLDER):
-            os.makedirs(self.DEFAULT_FOLDER)
+        if not os.path.exists(self.folder_name):
+            os.makedirs(self.folder_name)
 
-        file_name = os.path.join(self.DEFAULT_FOLDER, file_name)
-        torch.save(self.state_dict(), file_name)
+        path = os.path.join(self.folder_name, self.file_name)
+        torch.save(self.state_dict(), path)
 
-    def load(self, file_name=None):
-        file_name = file_name if file_name else self.DEFAULT_FILE_NAME
-        path = os.path.join(self.DEFAULT_FOLDER, file_name)
+    def load(self):
+
+        path = os.path.join(self.folder_name, self.file_name)
 
         if os.path.exists(path):
             self.load_state_dict(torch.load(path))

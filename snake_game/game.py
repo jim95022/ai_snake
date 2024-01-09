@@ -5,8 +5,10 @@ from enum import Enum
 import numpy as np
 import pygame
 
+from settings import SPEED, BLOCK_SIZE, FONT, FONT_SIZE, REWARD, HEIGHT, WIDTH
+
 pygame.init()
-font = pygame.font.Font("snake_game/PressStart.ttf", 25)
+font = pygame.font.Font(FONT, FONT_SIZE)
 
 
 class Direction(Enum):
@@ -24,12 +26,9 @@ RED = (233, 29, 36)
 GREY = (41, 47, 49)
 GREEN = (120, 159, 122)
 
-BLOCK_SIZE = 20
-SPEED = 200
-
 
 class SnakeGameAI:
-    def __init__(self, w=640, h=480):
+    def __init__(self, w=WIDTH, h=HEIGHT):
         self.w = w
         self.h = h
         # init display
@@ -78,13 +77,13 @@ class SnakeGameAI:
         game_over = False
         if self.is_collision() or self.frame_iteration > 100 * len(self.snake):
             game_over = True
-            reward = -10
+            reward = -REWARD
             return reward, game_over, self.score
 
         # 4. place new food or just move
         if self.head == self.food:
             self.score += 1
-            reward = 10
+            reward = REWARD
             self._place_food()
         else:
             self.snake.pop()
