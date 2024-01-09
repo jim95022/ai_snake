@@ -7,6 +7,9 @@ import torch.optim as optim
 
 
 class Linear_QNet(nn.Module):
+    DEFAULT_FOLDER = "./model"
+    DEFAULT_FILE_NAME = "model.pth"
+
     def __init__(self, input_size, hidden_size, output_size):
         super().__init__()
         self.linear1 = nn.Linear(input_size, hidden_size)
@@ -17,22 +20,24 @@ class Linear_QNet(nn.Module):
         x = self.linear2(x)
         return x
 
-    def save(self, file_name="model.pth"):
-        model_folder_path = "./model"
-        if not os.path.exists(model_folder_path):
-            os.makedirs(model_folder_path)
+    def save(self, file_name=None):
+        file_name = file_name if file_name else self.DEFAULT_FILE_NAME
 
-        file_name = os.path.join(model_folder_path, file_name)
+        if not os.path.exists(self.DEFAULT_FOLDER):
+            os.makedirs(self.DEFAULT_FOLDER)
+
+        file_name = os.path.join(self.DEFAULT_FOLDER, file_name)
         torch.save(self.state_dict(), file_name)
 
-    # def load(self, file_name="model.pth"):
-    #     model_folder_path = "./model"
-    #     if not os.path.exists(model_folder_path):
-    #         return
-    #     model = TheModelClass(*args, **kwargs)
-    #     file_name = os.path.join(model_folder_path, file_name)
-    #     model.load_state_dict(torch.load(file_name))
-    #     model.eval()
+    def load(self, file_name=None):
+        file_name = file_name if file_name else self.DEFAULT_FILE_NAME
+        path = os.path.join(self.DEFAULT_FOLDER, file_name)
+
+        if os.path.exists(path):
+            self.load_state_dict(torch.load(path))
+            self.eval()
+
+        return self
 
 
 class QTrainer:

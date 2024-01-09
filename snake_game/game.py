@@ -6,7 +6,7 @@ import numpy as np
 import pygame
 
 pygame.init()
-font = pygame.font.Font("snake_game/arial.ttf", 25)
+font = pygame.font.Font("snake_game/PressStart.ttf", 25)
 
 
 class Direction(Enum):
@@ -20,10 +20,9 @@ Point = namedtuple("Point", "x, y")
 
 # rgb colors
 WHITE = (255, 255, 255)
-RED = (200, 0, 0)
-BLUE1 = (0, 0, 255)
-BLUE2 = (0, 100, 255)
-BLACK = (0, 0, 0)
+RED = (233, 29, 36)
+GREY = (41, 47, 49)
+GREEN = (120, 159, 122)
 
 BLOCK_SIZE = 20
 SPEED = 200
@@ -114,14 +113,11 @@ class SnakeGameAI:
         return False
 
     def _update_ui(self):
-        self.display.fill(BLACK)
+        self.display.fill(GREEN)
 
         for pt in self.snake:
             pygame.draw.rect(
-                self.display, BLUE1, pygame.Rect(pt.x, pt.y, BLOCK_SIZE, BLOCK_SIZE)
-            )
-            pygame.draw.rect(
-                self.display, BLUE2, pygame.Rect(pt.x + 4, pt.y + 4, 12, 12)
+                self.display, GREY, pygame.Rect(pt.x, pt.y, BLOCK_SIZE, BLOCK_SIZE)
             )
 
         pygame.draw.rect(
